@@ -9,7 +9,14 @@ terraform {
 }
 
 provider "aws" {
-    access_key = ""
-    secret_key = ""
-    region = ""
+    profile = "Administrator-access-622746571813"
+    region = "us-east-1"
+}
+
+resource "aws_vpc" "vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = "true"
+  tags = {
+    Name = "my-vpc"
+  }
 }
