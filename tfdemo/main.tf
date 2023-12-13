@@ -1,16 +1,15 @@
-provider "docker" {
-    host = "tcp://localhost:2375"
+terraform {
+    required_providers {
+        aws = {
+            source = "hashicorp/aws"
+            version = "~> 4.16"
+        }
+    }
+    required_version = ">= 1.2.0"
 }
 
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
-  name  = "training"
-  ports {
-    internal = 80
-    external = 80
-  }
-}
-
-resource "docker_image" "nginx" {
-  name = "nginx:latest"
+provider "aws" {
+    access_key = ""
+    secret_key = ""
+    region = ""
 }
